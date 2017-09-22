@@ -16,30 +16,43 @@ namespace RetrieveData
         static void Main(string[] args)
         {
             string url = null;
-            try
+            while(true)
             {
-                Console.WriteLine("Enter the Page No between 1-45");
-                int pageNo = int.Parse(Console.ReadLine());
-                url = "http://api.themoviedb.org/3/movie/now_playing?api_key=e649c1ec4f43c9f8ea307ec5aec0e891&page=" + pageNo;
+                Console.WriteLine("Enter operation code");
+                Console.WriteLine("1. Now Playing");
+                Console.WriteLine("2. Exit");
+                string key = Console.ReadLine();
+                if(key.Equals("1"))
+                {
+                    try
+                    {
+                        Console.WriteLine("Enter the Page No between 1-45");
+                        int pageNo = int.Parse(Console.ReadLine());
+                        url = "http://api.themoviedb.org/3/movie/now_playing?api_key=e649c1ec4f43c9f8ea307ec5aec0e891&page=" + pageNo;
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Wrong Input");
+                    }
+                    new Task(()=> { ApiCall(url); }).Start();
+                    Console.ReadLine();
+                }
+                else if(key.Equals("2"))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Enter proper code");
+                }
             }
-            catch
-            {
-                Console.WriteLine("Wrong Input");
-            }
-            //var json = new WebClient().DownloadString(url);
-            new Task(()=> { ApiCall(url); }).Start();
-           // T.Start();
-
-           // var serializer = new JavaScriptSerializer();
-            //var data = serializer.Deserialize<JSONModel>(json);
-            Console.ReadLine();
         }
 
         static async void ApiCall(string url)
         {
             using (var client = new HttpClient())
             {
-                HttpResponseMessage response = await client.GetAsync(url);//+"&page="+page);
+                HttpResponseMessage response = await client.GetAsync(url);
                 try
                 {
                     response.EnsureSuccessStatusCode();
@@ -53,15 +66,12 @@ namespace RetrieveData
                 {
 
                     string responseBody = await response.Content.ReadAsStringAsync();
-                    //Console.WriteLine(responseBody);
                     var jsonObj = JsonConvert.DeserializeObject<ResultModel>(responseBody);
                     foreach (var obj in jsonObj.results)
                     {
-                        Console.WriteLine("{0}\t{1}\t{2}\t{3}", obj.id, obj.original_title, obj.title,obj.vote_count);
+                        Console.WriteLine("Movie Id:{0} \nMovie Name: {1} \n{3} \nUpvotes: {2}\n \n", obj.id, obj.title,obj.vote_count, obj.overview);
                     }
-
                 }
-                   Console.ReadLine();
             }
         }
     }
