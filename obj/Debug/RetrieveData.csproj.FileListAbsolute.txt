@@ -1,0 +1,9 @@
+C:\Users\ashishs\source\repos\RetrieveData\RetrieveData\bin\Debug\RetrieveData.exe.config
+C:\Users\ashishs\source\repos\RetrieveData\RetrieveData\bin\Debug\RetrieveData.exe
+C:\Users\ashishs\source\repos\RetrieveData\RetrieveData\bin\Debug\RetrieveData.pdb
+C:\Users\ashishs\source\repos\RetrieveData\RetrieveData\obj\Debug\RetrieveData.csprojResolveAssemblyReference.cache
+C:\Users\ashishs\source\repos\RetrieveData\RetrieveData\obj\Debug\RetrieveData.csproj.CoreCompileInputs.cache
+C:\Users\ashishs\source\repos\RetrieveData\RetrieveData\obj\Debug\RetrieveData.exe
+C:\Users\ashishs\source\repos\RetrieveData\RetrieveData\obj\Debug\RetrieveData.pdb
+C:\Users\ashishs\source\repos\RetrieveData\RetrieveData\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ashishs\source\repos\RetrieveData\RetrieveData\bin\Debug\Newtonsoft.Json.xml
